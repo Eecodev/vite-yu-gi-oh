@@ -1,17 +1,19 @@
 <template>
   <HeaderComponent title="Yu-Gi-Oh Api" />
-  <div v-for="(card, index) in cards">Card title:{{ card.title }}</div>
+  <div v-for="(card, index) in store.cardList">{{ card.title }}</div>
 </template>
 
 <script>
 import { store } from './data/store.js';
 import axios from 'axios';
 import HeaderComponent from './components/HeaderComponent.vue';
+import MainComponent from './components/MainComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HeaderComponent
+    HeaderComponent,
+    MainComponent
   },
   data() {
     return {
@@ -20,12 +22,12 @@ export default {
   },
   methods: {
     getCards() {
-      const url = store.apiUrl;
+      const url = store.apiUrl + store.endPoint.card;
 
       axios.get(url).then((response) => {
         console.log(response);
         store.cardList = response.data.data;
-      })
+      });
     }
   },
   created() {

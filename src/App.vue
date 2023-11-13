@@ -1,6 +1,7 @@
 <template>
   <HeaderComponent title="Yu-Gi-Oh Api" />
-  <div v-for="(card, index) in store.cardList">{{ card.title }}</div>
+    <div v-for="(card, index) in store.cardList">{{ card.title }}</div>
+    <MainComponent/>
 </template>
 
 <script>

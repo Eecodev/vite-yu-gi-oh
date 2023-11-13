@@ -3,8 +3,8 @@
         <img :src="image" class="card-img-top" :alt="title">
         <div class="card-body text-center">
             <h5 class="card-title">{{ title }}</h5>
-            <h5 class="card-title">{{ subtitle }}</h5>
-            <h5 class="card-title">{{ text }}</h5>
+            <h6 class="card-subtitle">{{ subtitle }}</h6>
+            <p class="card-text">{{ text }}</p>
         </div>
     </div>
 </template>

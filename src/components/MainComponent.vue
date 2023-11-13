@@ -14,7 +14,7 @@ import CardComponent from './CardComponent.vue';
 
 export default {
     name: 'MainComponent',
-    component: {
+    components: {
         CardComponent
     },
     data() {

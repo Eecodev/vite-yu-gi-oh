@@ -27,3 +27,70 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## SE CREO PRIMA PROGETTO
+
+- apro la cartella degli esercizi in vs code
+
+- digitare:
+
+```sh
+    npm create vue@latest
+```
+
+- alla prima domanda sul nome del progetto mettere il nome della repo
+
+- proseguire rspondendo sempre no
+
+- mi porto dentro la cartella creata:
+
+
+```sh
+    cd nome repo
+    code . -r
+```
+
+- digitare:
+
+```sh
+    npm install
+```
+
+- per controllare che tutto funziona far partire il server
+
+```sh
+    npm run dev
+```
+
+- per arrestare il server:
+
+```sh
+    ctrl + c
+```
+
+- Se tutto funziona pusho su github
+
+## PULIZIA DELLO SCAFFOLDING
+
+- Apro App.vue e cancello tutto e scrivo il mio codice in modalità 'options'
+- Apro la cartella components e la svuoto
+- Apro la cartella assets svuoto tutto tranne main.css
+- Cancello tutto il contenuto del main.css e lo rinomino in main.scss
+- creo in assets le cartelle images e styles
+- sposto dentro la cartella styles main.scss
+- aggiorno il path a main.scss in main.js
+- aggiungo eventuale cartella immagini a public
+- aggiungo dentro la cartella styles una - cartella partials per i file partial scss (es. varibili, animazioni, mixins, ecc)
+
+## Installare dipendenze
+
+```sh
+    npm install -D sass
+```
+
+```sh
+    npm install bootstrap axios  @fortawesome/fontawesome-free
+
+```
+- importo bootstrap dentro main.scss @import 'bootstrap/scss/bootstrap';
+

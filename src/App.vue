@@ -1,47 +1,37 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <HeaderComponent title="Yu-Gi-Oh Api" />
+  <div v-for="(card, index) in cards">Card title:{{ card.title }}</div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+import { store } from './data/store.js';
+import axios from 'axios';
+import HeaderComponent from './components/HeaderComponent.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+export default {
+  name: 'App',
+  components: {
+    HeaderComponent
+  },
+  data() {
+    return {
+      store
+    }
+  },
+  methods: {
+    getCards() {
+      const url = store.apiUrl;
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+      axios.get(url).then((response) => {
+        console.log(response);
+        store.cardList = response.data.data;
+      })
+    }
+  },
+  created() {
+    this.getCards();
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
 }
-</style>
+</script>
+
+<style lang="scss" scoped></style>

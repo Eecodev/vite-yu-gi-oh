@@ -34,7 +34,8 @@ export default {
       if(search){
         this.params = {
           num: 20,
-          offset: 0
+          offset: 0,
+          archetype: search
         }
       } else{
         this.params = null
@@ -49,7 +50,12 @@ export default {
       });
     },
     getArchetypes(){
-      axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php?num=20&offset=0', {params: this.params}).then((response) => {
+      let url = 'https://db.ygoprodeck.com/api/v7/archetypes.php?num=20&offset=0';
+
+      
+
+
+      axios.get(url).then((response) => {
         console.log(response);
         store.selectedArchetype = response.archetypes;
       })

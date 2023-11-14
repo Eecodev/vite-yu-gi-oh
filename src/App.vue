@@ -40,32 +40,33 @@ export default {
       } else{
         this.params = null
       }
+      this.getCards();
     },
     getCards() {
       const url = store.apiUrl;
 
-      axios.get(url).then((response) => {
+      axios.get(url, {params: this.params}).then((response) => {
         console.log(response);
         store.cardList = response.data.data;
       });
     },
-    getArchetypes(){
-      let url = 'https://db.ygoprodeck.com/api/v7/archetypes.php?num=20&offset=0';
+    // getArchetypes(){
+    //   let url = 'https://db.ygoprodeck.com/api/v7/archetypes.php?num=20&offset=0';
 
       
-
-
-      axios.get(url).then((response) => {
-        console.log(response);
-        store.selectedArchetype = response.archetypes;
-      })
-    }
+    //   axios.get(url).then((response) => {
+    //     console.log(response);
+    //     store.selectedArchetype = response.archetypes;
+    //   })
+    // }
   },
   created() {
     this.getCards();
-    this.getArchetypes();
+    // this.getArchetypes();
   }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  
+</style>

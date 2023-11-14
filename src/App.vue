@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     getCards() {
-      const url = store.apiUrl + store.endPoint.card;
+      const url = store.apiUrl;
 
       axios.get(url).then((response) => {
         console.log(response);

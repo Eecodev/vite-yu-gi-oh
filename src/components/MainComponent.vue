@@ -2,7 +2,7 @@
     <section>
         <div class="row gy-4">
             <div class="col-12 col-md-4 col-lg-3" v-for="(card, index) in store.cardList" :key="card.id">
-                <CardComponent :image="card.card_images" :title="card.name" :subtitle="card.archetype" :text="card.desc"/>
+                <CardComponent :image="card.card_images[0].image_url" :title="card.name" :subtitle="card.archetype" :text="card.desc"/>
             </div>
         </div>
     </section>

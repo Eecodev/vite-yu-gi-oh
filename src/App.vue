@@ -1,7 +1,9 @@
 <template>
   <HeaderComponent title="Yu-Gi-Oh Api" />
-    <div v-for="(card, index) in store.cardList">{{ card.title }}</div>
+  <main>
+    <SearchApp @filter-change="setParams" />
     <MainComponent/>
+  </main>
 </template>
 
 <script>
@@ -20,10 +22,24 @@ export default {
   },
   data() {
     return {
-      store
+      params: {
+        num: 20,
+        offset: 0
+      }
     }
   },
   methods: {
+    setParams(search){
+      console.log(search);
+      if(search){
+        this.params = {
+          num: 20,
+          offset: 0
+        }
+      } else{
+        this.params = null
+      }
+    },
     getCards() {
       const url = store.apiUrl;
 
@@ -31,10 +47,17 @@ export default {
         console.log(response);
         store.cardList = response.data.data;
       });
+    },
+    getArchetypes(){
+      axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php?num=20&offset=0', {params: this.params}).then((response) => {
+        console.log(response);
+        store.selectedArchetype = response.archetypes;
+      })
     }
   },
   created() {
     this.getCards();
+    this.getArchetypes();
   }
 }
 </script>
